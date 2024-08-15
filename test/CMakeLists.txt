@@ -120,15 +120,14 @@ if (WIN32)
 	list(APPEND DEPS curl_project)
 	add_definitions(-DCURL_STATICLIB)
 else()
-	find_package(CURL REQUIRED)
-	include_directories(${CURL_INCLUDE_DIR})
-	list(APPEND LIBS ${CURL_LIBRARIES})
+	list(APPEND LIBS curl)
 endif()
 
 # Google test
 externalproject_add(googletest
 		PREFIX googletest
 		GIT_REPOSITORY https://github.com/google/googletest
+    GIT_TAG main
 		UPDATE_COMMAND ""
 )
 externalproject_get_property(googletest source_dir)
